@@ -3,13 +3,12 @@ import { client, urlFor } from '../../lib/client'
 import Image from 'next/image'
 import { Product } from '../../components'
 import ImageMagnify from '../../components/ImageMagnify'
+import { useStateContext } from '../../Context/StateContext'
 
-const ProductDetails = ({
-  productData: { image, name, details, price },
-  productsData,
-}) => {
-  const [qty, setQty] = useState(1)
+const ProductDetails = ({ productData, productsData }) => {
+  const { image, name, details, price } = productData
   const [imageIndex, setImageIndex] = useState(0)
+  const { incQty, decQty, qty, onAdd } = useStateContext()
   return (
     <div className='flex justify-between flex-wrap text-blue-dark mt-10'>
       <div className='flex justify-end pr-10 items-center w-1/2'>
@@ -24,7 +23,7 @@ const ProductDetails = ({
               onMouseEnter={() => setImageIndex(i)}
               className={`${
                 imageIndex === i && 'border-2 border-red-600'
-              } rounded m-1`}
+              } rounded m-1 hover:scale-125 duration-500`}
             />
           ))}
         </div>
@@ -121,10 +120,7 @@ const ProductDetails = ({
         <div>
           <h3>Quantity:</h3>
           <p className='flex justify-center items-center px-2 py-1 mt-2 border w-fit select-none rounded-xl '>
-            <span
-              className='cursor-pointer'
-              onClick={() => setQty((prev) => (prev >= 1 ? prev - 1 : 0))}
-            >
+            <span className='cursor-pointer' onClick={() => decQty()}>
               <svg
                 className='w-8 h-8 hover:fill-slate-200'
                 fill='none'
@@ -141,10 +137,7 @@ const ProductDetails = ({
               </svg>
             </span>
             <span className='font-bold text-lg px-2'>{qty}</span>
-            <span
-              className='cursor-pointer'
-              onClick={() => setQty((prev) => prev + 1)}
-            >
+            <span className='cursor-pointer' onClick={() => incQty()}>
               <svg
                 className='w-8 h-8 hover:fill-slate-200'
                 fill='none'
@@ -165,6 +158,7 @@ const ProductDetails = ({
             <button
               type='button'
               className='flex items-center rounded bg-white-pure hover:bg-orange-200 border-orange-600 border text-orange-600 px-6 py-2 m-3'
+              onClick={() => onAdd(productData, qty)}
             >
               <svg
                 className='w-4 h-4 mx-1'

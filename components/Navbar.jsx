@@ -1,6 +1,9 @@
 import React from 'react'
 import Link from 'next/link'
+import Cart from './Cart'
+import { useStateContext } from '../Context/StateContext'
 const Navbar = () => {
+  const { totalQuantities, setShowCart } = useStateContext()
   return (
     <nav className='flex justify-between p-6'>
       <p>
@@ -26,7 +29,7 @@ const Navbar = () => {
       </div>
       <button
         className='relative transition-transform duration-200 text-gray-500 hover:scale-110'
-        onClick={''}
+        onClick={() => setShowCart(true)}
       >
         <svg
           className='w-6 h-6'
@@ -43,9 +46,10 @@ const Navbar = () => {
           />
         </svg>
         <span className='absolute -top-2 left-4 text-white-pure bg-orange-700 w-5 h-5 rounded-full flex items-center justify-center text-sm font-semibold'>
-          10
+          {totalQuantities}
         </span>
       </button>
+      <Cart />
     </nav>
   )
 }
