@@ -9,13 +9,15 @@ const Layout = ({ children }) => {
       <Head>
         <title>Heels shop</title>
       </Head>
-      <header>
-        <Navbar />
-      </header>
-      <main className=' max-w-screen-2xl m-auto w-full'>{children}</main>
-      <footer>
-        <Footer />
-      </footer>
+      <div className='flex flex-col justify-between h-screen'>
+        <header>
+          <Navbar />
+        </header>
+        <main className=' max-w-screen-2xl m-auto w-full'>{children}</main>
+        <footer>
+          <Footer />
+        </footer>
+      </div>
     </div>
   )
 }

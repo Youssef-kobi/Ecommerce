@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { Product } from '../../components'
 import ImageMagnify from '../../components/ImageMagnify'
 import { useStateContext } from '../../Context/StateContext'
+import Link from 'next/link'
 
 const ProductDetails = ({ productData, productsData }) => {
   const { image, name, details, price } = productData
@@ -176,12 +177,14 @@ const ProductDetails = ({ productData, productsData }) => {
               </svg>
               Add To Cart
             </button>
-            <button
-              type='button'
-              className='rounded bg-orange-600 hover:bg-orange-500 px-6 py-2 m-3'
-            >
-              Buy Now
-            </button>
+            <Link href={'/success'}>
+              <button
+                type='button'
+                className='rounded bg-orange-600 hover:bg-orange-500 px-6 py-2 m-3'
+              >
+                Buy Now
+              </button>
+            </Link>
           </div>
         </div>
       </div>

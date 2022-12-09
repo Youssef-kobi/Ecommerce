@@ -21,6 +21,9 @@ const HeroBanner = ({ bannerData }) => {
           </button>
         </Link>
       </div>
+      {/* <video className='' autoPlay playsInline muted loop>
+        <source src='/heels.mp4' type='video/mp4' />
+      </video> */}
       <Image
         src={urlFor(bannerData.image[0]).url()}
         alt='headphones'

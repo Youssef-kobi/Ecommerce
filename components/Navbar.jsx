@@ -15,10 +15,10 @@ const Navbar = () => {
           <Link href='/'>Home</Link>
         </p>
         <p className='mr-4 hover:scale-110 duration-100'>
-          <Link href='/'>Women</Link>
+          <Link href='/search?Categories=women'>Women</Link>
         </p>
         <p className='mr-4 hover:scale-110 duration-100'>
-          <Link href='/'>Kids</Link>
+          <Link  href='/search?Categories=kids'>Kids</Link>
         </p>
         <p className='mr-4 hover:scale-110 duration-100'>
           <Link href='/'>About us</Link>

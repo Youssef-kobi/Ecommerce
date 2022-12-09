@@ -8,7 +8,7 @@ const Product = ({ setImageIndex, product: { image, name, slug, price } }) => {
     <Link
       href={`/product/${slug.current}`}
       onClick={() => setImageIndex(0)}
-      className='w-72 mr-6 border text-blue-dark rounded-xl overflow-auto hover:scale-110 hover:duration-500 duration-500 flex flex-col'
+      className='w-56 h-72 m-6 border text-blue-dark rounded-xl overflow-auto hover:scale-110 hover:duration-500 duration-500 flex flex-col'
     >
       <div className='relative w-full h-60'>
         <Image

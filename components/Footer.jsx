@@ -2,6 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 
 const Footer = () => {
+ // create a footer using tailwindcss
+
   return (
     <div className='flex flex-col justify-center items-center'>
       <p className='flex'>

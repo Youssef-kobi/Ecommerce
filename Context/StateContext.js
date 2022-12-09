@@ -24,19 +24,16 @@ const StateContext = ({ children }) => {
   }
 
   const onAdd = (product, quantity) => {
-    console.log(product, quantity)
     const productInCart = cartItems.find((item) => item._id === product._id)
     setTotalPrice((prevTotalPrice) => prevTotalPrice + product.price * quantity)
     setTotalQuantities((prevTotalQuantities) => prevTotalQuantities + quantity)
     if (productInCart) {
       const updateCartItems = cartItems.map((cartProduct) => {
         if (cartProduct._id === product._id)
-          console.log('cartProduct.quantity', cartProduct.quantity)
-        console.log('quantity', quantity)
-        return {
-          ...cartProduct,
-          quantity: cartProduct.quantity + quantity,
-        }
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity + quantity,
+          }
       })
       setCartItems(updateCartItems)
     } else {
